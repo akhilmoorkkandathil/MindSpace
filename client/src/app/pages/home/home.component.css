@@ -1,0 +1,89 @@
+ul{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+a{
+    text-decoration: none;
+    color: white;
+    font-size: 1rem;
+    padding: 5px;
+}
+
+.spacer {
+    flex: 1 1 auto;
+  }
+  
+  .profile-photo {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+  }
+
+  .home-body {
+    display: flex;
+    justify-content: space-between;
+    padding: 16px;
+  }
+  .posts-container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 70%;
+  }
+  
+  .post-card {
+    display: flex;
+    flex-direction: column;
+    padding: 16px;
+  }
+  
+  .post-card-content {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+  }
+  
+  .text-content {
+    flex: 1;
+  }
+  
+  .post-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  
+  .post-content {
+    display: -webkit-box;
+    -webkit-line-clamp: 3; /* Limit to 3 lines */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 1rem;
+    color: rgb(123, 123, 123);
+  }
+  
+  .image-container {
+    flex-shrink: 0;
+  }
+  
+  .post-image {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 8px;
+  }
+  
+  .users-container {
+    flex: 1; /* Adjust width as needed */
+    padding-left: 16px;
+    width: 30%;
+  }
+  .user-profile {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    margin-right: 8px;
+  }
+  
