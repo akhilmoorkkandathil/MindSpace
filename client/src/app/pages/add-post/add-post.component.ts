@@ -8,6 +8,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { User } from '../../models/user.mode';
+import { UserDataService } from '../../services/userDataService/user-data.service';
 
 
 
@@ -33,16 +35,25 @@ export class AddPostComponent {
   imagePreview:string;
 
   form!:FormGroup;
+  userData:User;
 
 
 
-  constructor(public postService: PostService, public route:ActivatedRoute){}
+  constructor(public postService: PostService, public route:ActivatedRoute,private userDataService:UserDataService){}
   ngOnInit(): void {
+    this.validatFome();
+    this.getUserData()
+  }
+
+  validatFome(){
     this.form = new FormGroup({
       'title':new FormControl(null,{validators:[Validators.required,Validators.minLength(3)]}),
       'content': new FormControl(null,{validators:[Validators.required,Validators.minLength(4)]}),
       'image': new FormControl(null,{validators:[Validators.required]})
     })
+  }
+  getUserData(){
+    this.userData = this.userDataService.getUserData()
   }
   onImagePick(event: Event) {
     const file = (event.target as HTMLInputElement).files?.[0];
@@ -66,7 +77,8 @@ export class AddPostComponent {
       this.postService.addPost(
         this.form.value.title,
         this.form.value.content,
-        this.form.value.image
+        this.form.value.image,
+        this.userData._id
       );
     }else{
       // this.postService.updatePost(

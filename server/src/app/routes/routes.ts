@@ -2,6 +2,7 @@ import express, { Router, Request, Response } from 'express';
 import AuthControllers from '../controllers/authController';
 import JwtControllers from '../../services/jwt';
 import { PostController } from '../controllers/postController';
+import upload from '../../utils/multerStorage';
 
 
 
@@ -18,7 +19,7 @@ route.post('/register', authController.register);
 route.post('/verifyOtp', authController.verifyOtp );
 route.post('/login', authController.login);
 
-route.post('/addPost',jwtController.isAuthenticated, postController.addPost);
+route.post('/addPost',jwtController.isAuthenticated, upload.single('image'), postController.addPost);
 route.post('/fetchPost',jwtController.isAuthenticated, postController.fetchPosts);
 
 

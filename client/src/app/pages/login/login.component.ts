@@ -5,6 +5,7 @@ import { MessageService } from 'primeng/api';
 import { User } from '../../models/user.mode';
 import { AuthService } from '../../services/authService/auth.service';
 import { Router } from '@angular/router';
+import { UserDataService } from '../../services/userDataService/user-data.service';
 
 @Component({
   selector: 'app-login',
@@ -17,7 +18,7 @@ import { Router } from '@angular/router';
 export class LoginComponent {
   user: User = { email: '', password: '' };
 
-  constructor(private authService: AuthService, private router: Router,private messageService: MessageService) {}
+  constructor(private authService: AuthService, private router: Router,private messageService: MessageService,private userDataService:UserDataService) {}
 
   onLogin() {
     console.log("loginclicked");
@@ -26,7 +27,7 @@ export class LoginComponent {
     this.authService.login(this.user).subscribe(
       (response) => {
         console.log(response);
-        //this.userDataService.setUserData(response.data.user)
+        this.userDataService.setUserData(response.data.user)
         
         localStorage.setItem('accessToken',response.data.accessToken);
         localStorage.setItem('refreshToken',response.data.refreshToken);
