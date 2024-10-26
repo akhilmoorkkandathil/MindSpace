@@ -6,6 +6,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatCardModule } from '@angular/material/card';
 import { MatListModule } from '@angular/material/list';
+import { Router } from '@angular/router';
 
 
 interface Post {
@@ -27,6 +28,8 @@ interface User {
   styleUrl: './home.component.css'
 })
 export class HomeComponent {
+
+  constructor(private router:Router){}
   posts: Post[] = [
     {
       title: 'Post Title 1',
@@ -41,6 +44,10 @@ export class HomeComponent {
     // Add more posts as needed
   ];
 
+  onButtonClick(){
+    this.router.navigate(['/addPost'])
+  }
+
   users: any[] = [
     {
       name: 'UserName1',
@@ -53,7 +60,8 @@ export class HomeComponent {
     // Add more users as needed
   ];
   signOut() {
-    // Implement sign-out logic here
-    console.log('User signed out');
+    this.router.navigate(['/login']);
+    localStorage.removeItem('accessToken');
+    localStorage.removeItem('refreshToken');
   }
 }

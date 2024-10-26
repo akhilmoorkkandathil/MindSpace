@@ -4,6 +4,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { LandingComponent } from './pages/landing/landing.component';
 import { OtpComponent } from './pages/otp/otp.component';
 import { HomeComponent } from './pages/home/home.component';
+import { AddPostComponent } from './pages/add-post/add-post.component';
 
 export const routes: Routes = [
     {path:'',component:LandingComponent},
@@ -11,5 +12,6 @@ export const routes: Routes = [
     {path:'register',component:RegisterComponent},
     {path:'verify',component:OtpComponent},
     {path:'home',component:HomeComponent},
+    {path:'addPost',component:AddPostComponent},
     { path: '**', redirectTo: '', pathMatch: 'full'},
 ];

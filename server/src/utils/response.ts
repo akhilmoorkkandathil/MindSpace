@@ -1,9 +1,9 @@
-import { IMessage, LoginResponse, StatusMessage } from "../interfaces/interface";
+import {  LoginResponse, StatusMessage } from "../interfaces/interface";
 import { Response } from 'express';
 
 
 
-export const successResponse = (statusCode: number, data: StatusMessage | LoginResponse | IMessage[], res:Response) => {
+export const successResponse = (statusCode: number, data: StatusMessage | LoginResponse, res:Response) => {
     return res.status(statusCode).json(data);
 };
 

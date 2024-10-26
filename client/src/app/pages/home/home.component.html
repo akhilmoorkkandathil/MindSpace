@@ -4,7 +4,7 @@
     <span class="spacer"></span>
     
     <!-- Write Button with Icon -->
-    <button mat-button routerLink="/addPost" routerLinkActive="mat-accent">
+    <button mat-button (click)="onButtonClick()" routerLinkActive="mat-accent">
       <mat-icon>edit</mat-icon>
       Write
     </button>
