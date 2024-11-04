@@ -7,8 +7,16 @@ ul{
 a{
     text-decoration: none;
     color: white;
+    font-size: 1rem;
+    padding: 5px;
 }
 
-.spacer{
+.spacer {
     flex: 1 1 auto;
-}
+  }
+  
+  .profile-photo {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+  }

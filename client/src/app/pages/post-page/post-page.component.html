@@ -1,0 +1,23 @@
+<div class="container">
+    <mat-card *ngIf="post" class="post-detail-card">
+      <!-- Back Button and Title -->
+      <mat-toolbar class="post-detail-toolbar">
+        <button class="post-arrow" mat-icon-button (click)="goBack()">
+          <mat-icon >arrow_back</mat-icon>
+        </button>
+        <span class="post-detail-title">{{ post.title }}</span>
+      </mat-toolbar>
+  
+      <!-- Scrollable Content -->
+      <div class="scrollable-content">
+        <!-- Post Image -->
+        <img mat-card-image [src]="post.image" alt="{{ post.title }}" class="post-detail-image" />
+  
+        <!-- Post Content -->
+        <mat-card-content>
+          <p class="post-detail-content">{{ post.content }}</p>
+        </mat-card-content>
+      </div>
+    </mat-card>
+  </div>
+  

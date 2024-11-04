@@ -1,61 +1,36 @@
-<mat-toolbar color="primary">
-    <h2>MindSpace</h2>
-    
-    <span class="spacer"></span>
-    
-    <!-- Write Button with Icon -->
-    <button mat-button (click)="onButtonClick()" routerLinkActive="mat-accent">
-      <mat-icon>edit</mat-icon>
-      Write
-    </button>
+
+
+  <app-header></app-header>
   
-    <!-- Profile Menu -->
-    <button mat-button [matMenuTriggerFor]="profileMenu">
-      <img class="profile-photo" src="https://gratisography.com/wp-content/uploads/2024/01/gratisography-cyber-kitty-800x525.jpg" alt="Profile Photo" />
-    </button>
-  
-    <mat-menu #profileMenu="matMenu">
-      <button mat-menu-item routerLink="/profile">
-        <mat-icon>person</mat-icon>
-        Profile
-      </button>
-      <button mat-menu-item routerLink="/stories">
-        <mat-icon>library_books</mat-icon>
-        Stories
-      </button>
-      <button mat-menu-item (click)="signOut()">
-        <mat-icon>logout</mat-icon>
-        Sign Out
-      </button>
-    </mat-menu>
-  </mat-toolbar>
   <div class="home-body">
-    <div class="posts-container">
-        <mat-card *ngFor="let post of posts" class="post-card">
-          <div class="post-card-content">
-            <div class="text-content">
-              <mat-card-header>
-                <mat-card-title class="post-title">{{ post.title }}</mat-card-title>
-              </mat-card-header>
-              <mat-card-content>
-                <p class="post-content">{{ post.content }}</p>
-              </mat-card-content>
-            </div>
-            <div class="image-container">
-              <img class="post-image" [src]="post.image" alt="Post Image" />
-            </div>
-          </div>
+    <div class="posts-container" *ngIf="posts!==[]">
+        <mat-card *ngFor="let post of posts" class="post-card" (click)="goToPostDetails(post)">
+          <app-post-card
+            [title]="post.title"
+            [content]="post.content"
+            [image]="post.image"
+          ></app-post-card>
         </mat-card>
       </div>
       
 
-    <div class="users-container">
-      <mat-list>
-        <h3 mat-subheader>Users</h3>
-        <mat-list-item *ngFor="let user of users">
-          <img class="user-profile" [src]="user.profileImage" alt="{{ user.name }}" />
-          <span>{{ user.name }}</span>
-        </mat-list-item>
-      </mat-list>
-    </div>
+      <div class="users-container">
+        <mat-list class="user-list">
+          <h3 mat-subheader>Users</h3>
+          <div *ngFor="let user of users">
+            <mat-list-item>
+              <div class="user-card">
+                <img class="user-profile" [src]="user.profileImage" alt="{{ user.name }}" />
+                <div class="user-info">
+                  <span class="user-name">{{ user.name }}</span>
+                  <span class="user-description">{{ user.description }}</span>
+                </div>
+              </div>
+            </mat-list-item>
+          </div>
+        </mat-list>
+      </div>
+      
+
+    
   </div>

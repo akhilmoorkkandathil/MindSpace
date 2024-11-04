@@ -1,0 +1,68 @@
+/* Add this font in the HTML head */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap');
+
+/* Style the container to center the card */
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Full viewport height */
+  overflow: hidden; /* Prevent the entire page from scrolling */
+  background-color: #f9f9f9;
+  padding: 0 15px;
+  font-family: 'Roboto', sans-serif;
+}
+
+/* Center the card with a maximum width and height */
+.post-detail-card {
+  max-width: 700px;
+  width: 100%;
+  height: 90vh; /* Fill most of the viewport height */
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+}
+
+.post-arrow{
+    cursor: pointer;
+}
+/* Toolbar styling */
+.post-detail-toolbar {
+  display: flex;
+  align-items: center;
+  background-color: #f5f5f5;
+  border-bottom: 1px solid #ddd;
+  border-radius: 8px 8px 0 0;
+  padding: 0 10px;
+}
+
+.post-detail-title {
+  margin-left: 10px;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+/* Scrollable content area */
+.scrollable-content {
+  overflow-y: auto; /* Only the content area is scrollable */
+  padding: 10px;
+  flex-grow: 1; /* Takes remaining height in the card */
+  scrollbar-width: none;
+}
+
+/* Image styling */
+.post-detail-image {
+  width: 100%;
+  max-height: 300px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+/* Content text styling */
+.post-detail-content {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: hsl(0, 0%, 25%);
+  margin: 15px 0;
+}

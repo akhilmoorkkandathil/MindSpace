@@ -5,17 +5,25 @@ export const AuthInterceptor: HttpInterceptorFn = (
   req: HttpRequest<unknown>,
   next: HttpHandlerFn
 ): Observable<HttpEvent<unknown>> => {
-  const accessToken: string | null = localStorage.getItem('accessToken');
-  const refreshToken: string | null = localStorage.getItem('refreshToken');
+  // Check if window and localStorage are available (browser environment)
+  const isBrowser = typeof window !== 'undefined' && typeof localStorage !== 'undefined';
+  
+  let accessToken: string | null = null;
+  let refreshToken: string | null = null;
+
+  if (isBrowser) {
+    accessToken = localStorage.getItem('accessToken');
+    refreshToken = localStorage.getItem('refreshToken');
+  }
 
   if (accessToken) {
     req = req.clone({
       setHeaders: {
         Authorization: `Bearer ${accessToken}`,
-        'X-Refresh-Token': refreshToken ? refreshToken : ''
+        'X-Refresh-Token': refreshToken || ''
       }
     });
   }
 
-  return next(req); // Call the next handler
+  return next(req);
 };

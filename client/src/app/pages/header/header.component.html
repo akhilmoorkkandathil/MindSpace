@@ -1,17 +1,31 @@
-<mat-toolbar color="primary d-flex justify-between" >
-    <span><a routerLink="/">MyMessages</a></span>
+<mat-toolbar color="primary">
+    <h2 [routerLink]="['/home']" routerLinkActive="router-link-active"  >MindSpace</h2>
+    
     <span class="spacer"></span>
-    <ul>
-        <li>
-            <a mat-button routerLink="/addPost" routerLinkActive="mat-accent">Add Post</a>
-        </li>
-        <li>
-            <a mat-button routerLink="/login" routerLinkActive="mat-accent">Login</a>
-        </li>
-        <li>
-            <a mat-button routerLink="/signup" routerLinkActive="mat-accent">Signup</a>
-        </li>
-    </ul>
-</mat-toolbar>
-
-
+    
+    <!-- Write Button with Icon -->
+    <button mat-button (click)="onButtonClick()" routerLinkActive="mat-accent">
+      <mat-icon>edit</mat-icon>
+      Write
+    </button>
+  
+    <!-- Profile Menu -->
+    <button mat-button [matMenuTriggerFor]="profileMenu">
+      <img class="profile-photo" src="https://gratisography.com/wp-content/uploads/2024/01/gratisography-cyber-kitty-800x525.jpg" alt="Profile Photo" />
+    </button>
+  
+    <mat-menu #profileMenu="matMenu">
+      <button mat-menu-item routerLink="/profile">
+        <mat-icon>person</mat-icon>
+        Profile
+      </button>
+      <button mat-menu-item (click)="userPostPage()" routerLinkActive="router-link-active" >
+        <mat-icon>library_books</mat-icon>
+        Stories
+      </button>
+      <button mat-menu-item (click)="signOut()">
+        <mat-icon>logout</mat-icon>
+        Sign Out
+      </button>
+    </mat-menu>
+  </mat-toolbar>

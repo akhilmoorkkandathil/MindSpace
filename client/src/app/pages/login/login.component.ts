@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormGroup, FormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
 import { User } from '../../models/user.mode';
@@ -29,8 +29,10 @@ export class LoginComponent {
         console.log(response);
         this.userDataService.setUserData(response.data.user)
         
-        localStorage.setItem('accessToken',response.data.accessToken);
-        localStorage.setItem('refreshToken',response.data.refreshToken);
+        if (typeof window !== 'undefined' && typeof localStorage !== 'undefined') {
+          localStorage.setItem('accessToken', response.data.accessToken);
+          localStorage.setItem('refreshToken', response.data.refreshToken);
+        }
         // Handle successful login, e.g., store token and redirect
         this.messageService.add({ severity: 'contrast', summary: 'Success', detail: response.message });
         this.router.navigate(['/home']);

@@ -1,6 +1,6 @@
 <div class="container">
     <mat-card class="post-card">
-      <h2 class="heading">Express your mind here</h2>
+      <h2 class="heading">{{ mode === 'edit' ? 'Edit Post' : 'Express your mind here' }}</h2>
       <form [formGroup]="form" (submit)="onSavePost()">
         
         <mat-form-field class="full-width">

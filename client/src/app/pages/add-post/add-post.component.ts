@@ -10,6 +10,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { User } from '../../models/user.mode';
 import { UserDataService } from '../../services/userDataService/user-data.service';
+import { CommonModule } from '@angular/common';
 
 
 
@@ -23,6 +24,7 @@ import { UserDataService } from '../../services/userDataService/user-data.servic
     MatButtonModule,
     MatIconModule,
     ReactiveFormsModule,
+    CommonModule
   ],
   templateUrl: './add-post.component.html',
   styleUrl: './add-post.component.css'
@@ -30,7 +32,7 @@ import { UserDataService } from '../../services/userDataService/user-data.servic
 export class AddPostComponent {
   enteredTitle = '';
   enteredContent = '';
-  private mode = 'create';
+  mode = 'create';
   public post!: Post;
   imagePreview:string;
 
@@ -42,7 +44,34 @@ export class AddPostComponent {
   constructor(public postService: PostService, public route:ActivatedRoute,private userDataService:UserDataService){}
   ngOnInit(): void {
     this.validatFome();
-    this.getUserData()
+    this.getUserData();
+    this.checkMode();
+  }
+
+  checkMode() {
+    this.route.params.subscribe(params => {
+      if (params['postId']) {
+        this.mode = 'edit'; // Set mode to edit
+        console.log("Edit mode");
+        this.fetchAndPopulateData()
+      } else {
+        
+        this.mode = 'create'; // Set mode to create
+      }
+    });
+  }
+
+  fetchAndPopulateData(){
+    this.post = this.postService.getSelectedPost();
+    this.imagePreview = this.post.image; 
+
+    // Patch the form with the post data
+    this.form.patchValue({
+      title: this.post.title,
+      content: this.post.content,
+      image: this.post.image
+    });
+
   }
 
   validatFome(){
@@ -81,12 +110,13 @@ export class AddPostComponent {
         this.userData._id
       );
     }else{
-      // this.postService.updatePost(
-      //   this.postId,
-      //   this.form.value.title,
-      //   this.form.value.content,
-      //   this.form.value.image
-      // );
+      this.postService.updatePost(
+        this.post._id,
+        this.form.value.title,
+        this.form.value.content,
+        this.form.value.image,
+        this.userData._id
+      );
     }
   }
 }

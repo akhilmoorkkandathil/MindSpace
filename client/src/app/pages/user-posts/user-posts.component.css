@@ -1,0 +1,66 @@
+/* Centering the main container and applying basic styles */
+.main-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center align items */
+    padding: 20px; /* Padding around the container */
+    font-family: 'Arial', sans-serif; /* Font for the page */
+  }
+  
+  /* Heading style */
+  .heading {
+    font-size: 2.5rem; /* Font size for the heading */
+    font-weight: bold; /* Make the text bold */
+    color: #333; /* Color for the text */
+    margin-bottom: 20px; /* Space below the heading */
+  }
+  
+  /* Styling for the posts container */
+  .posts-container {
+    display: flex;
+    flex-wrap: wrap; /* Allow items to wrap to the next line */
+    justify-content: center; /* Center the items horizontally */
+    gap: 15px; /* Space between the post cards */
+    width: 100%; /* Full width */
+    max-width: 1000px; /* Maximum width for the posts container */
+  }
+  
+  /* Individual post card styling */
+  .post-card {
+    cursor: pointer; /* Change cursor to pointer on hover */
+    transition: transform 0.2s; /* Smooth transition for hover effect */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Shadow effect */
+    overflow: hidden; /* Hide overflow */
+  }
+  
+  /* Hover effect for post cards */
+  .post-card:hover {
+    transform: scale(1.01); /* Slight zoom on hover */
+  }
+  
+  /* Button container styling */
+  .button-container {
+    display: flex;
+    margin-top: 15px; /* Space above the button container */
+}
+
+/* Button styling */
+button {
+    background-color: white; /* White background */
+    color: black; /* Black text */
+    border: 2px solid rgb(224, 224, 224); /* Border with color */
+    border-radius: 4px; /* Rounded corners */
+    padding: 10px 15px; /* Padding for button */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s, box-shadow 0.3s; /* Smooth background color and shadow transition */
+    width: 50%; /* Width of the button */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Shadow effect */
+    margin: 3px;
+}
+
+/* Button hover effects */
+button:hover {
+    background-color: rgba(231, 231, 231, 0.8); /* Light gray background on hover */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Increase shadow on hover */
+}
