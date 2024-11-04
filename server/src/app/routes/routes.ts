@@ -20,7 +20,10 @@ route.post('/verifyOtp', authController.verifyOtp );
 route.post('/login', authController.login);
 
 route.post('/addPost',jwtController.isAuthenticated, upload.single('image'), postController.addPost);
-route.post('/fetchPost',jwtController.isAuthenticated, postController.fetchPosts);
+route.post('/updatePost',jwtController.isAuthenticated, upload.single('image'), postController.updatePost);
+
+route.get('/fetchPosts',jwtController.isAuthenticated, postController.fetchPosts);
+route.get('/deletePost/:id',jwtController.isAuthenticated, postController.deletePost);
 
 
 

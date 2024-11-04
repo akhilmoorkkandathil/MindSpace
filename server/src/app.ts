@@ -5,6 +5,9 @@ import cors from 'cors'
 import connectToDatabase from './config/connectDb';
 import route from "./app/routes/routes";
 import corsOptions from "./config/cors";
+import dotenv from 'dotenv';
+dotenv.config();
+
 
 
 class App{
@@ -17,11 +20,6 @@ class App{
         this.applyMiddleware()
         this.routes()
         connectToDatabase()
-    }
-
-    private hello(){
-        console.log("Thsi hellow function callled");
-        
     }
 
     private applyMiddleware(): void {
